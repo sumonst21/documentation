@@ -117,6 +117,7 @@ The [Environment Indicator](https://www.drupal.org/project/environment_indicator
             $config['environment_indicator.indicator']['name'] = 'Local Dev';
             $config['environment_indicator.indicator']['bg_color'] = '#808080';
             $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
+            break;
           case 'dev':
             $config['environment_indicator.indicator']['name'] = 'Dev';
             $config['environment_indicator.indicator']['bg_color'] = '#d25e0f';
