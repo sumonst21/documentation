@@ -214,6 +214,35 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/changelog/*/*', '/terminus/commands/*'],
+        query: `
+          {
+            allSitePage {
+              nodes {
+                context {
+                  category
+                  tags
+                }
+                path
+              }
+            }
+            site {
+              pathPrefix
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }`,
+        serialize: ({ allSitePage, site }) =>
+          allSitePage.nodes.map( node => {
+            return {
+              url: `${site.siteMetadata.siteUrl}${site.pathPrefix}${node.path}`,
+              changefreq: 'daily',
+              priority: 0.7,
+            }
+          }),
+      },
     },
     `gatsby-plugin-fontawesome-css`,
   ],
